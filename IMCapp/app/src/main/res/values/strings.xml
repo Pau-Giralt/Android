@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">IMC-app</string>
+    <string name="app_title">B &amp; O BMI CALCULATOR</string>
+    <string name="male">MALE</string>
+    <string name="female">FEMALE</string>
+    <string name="height">HEIGHT</string>
+    <string name="inches">inches</string>
+    <string name="height_default">0</string>
+</resources>

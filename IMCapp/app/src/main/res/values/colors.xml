@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="fondo">#0A0E21</color>
+    <color name="card">#1D1E33</color>
+    <color name="calcular_btn">#512DA8</color>
+    <color name="card_default">#1D1F33</color>
+    <color name="card_selected">#3A3D5C</color>
+    <color name="gris">#7F808A</color>
+    <color name="morado">#5B3FD0</color>
+</resources>
