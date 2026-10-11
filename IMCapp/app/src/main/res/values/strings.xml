@@ -16,4 +16,17 @@
     <string name="increase_age">Aumentar edad</string>
     <string name="calculate">CALCULATE</string>
     <string name="error_height">Selecciona una altura</string>
+    <string name="results_title">BMI Results</string>
+    <string name="your_results">Your Results</string>
+    <string name="recalculate">RE-CALCULATE</string>
+    <string name="back">Volver</string>
+    <string name="bmi_underweight">UNDERWEIGHT</string>
+    <string name="bmi_normal">NORMAL</string>
+    <string name="bmi_overweight">OVERWEIGHT</string>
+    <string name="bmi_obese">OBESE</string>
+    <string name="desc_underweight">Tienes un peso inferior al normal.</string>
+    <string name="desc_normal">Tienes un peso corporal normal. ¡Buen trabajo!</string>
+    <string name="desc_overweight">Tienes un peso superior al normal.</string>
+    <string name="desc_obese">Tienes un peso muy superior al normal.</string>
+    <string name="pounds">lb</string>
 </resources>

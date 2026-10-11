@@ -1,10 +1,13 @@
 package com.example.imc_app
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -78,6 +81,19 @@ class MainActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.btnAgePlus).setOnClickListener {
             age++
             tvAge.text = age.toString()
+        }
+        findViewById<Button>(R.id.btnCalculate).setOnClickListener {
+            if (height == 0) {
+                Toast.makeText(this, getString(R.string.error_height), Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.putExtra("HEIGHT", height)
+            intent.putExtra("WEIGHT", weight)
+            intent.putExtra("AGE", age)
+            intent.putExtra("GENDER", gender)
+            startActivity(intent)
         }
     }
 

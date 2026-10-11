@@ -10,4 +10,7 @@
     <color name="gris">#7F808A</color>
     <color name="morado">#5B3FD0</color>
     <color name="boton_redondo">#4C4F5E</color>
+    <color name="verde">#24D876</color>
+    <color name="naranja">#FF9800</color>
+    <color name="rojo">#EB1555</color>
 </resources>
