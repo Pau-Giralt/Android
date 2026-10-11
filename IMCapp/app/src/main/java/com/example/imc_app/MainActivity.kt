@@ -1,6 +1,7 @@
 package com.example.imc_app
 
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
@@ -11,6 +12,9 @@ import androidx.core.view.WindowInsetsCompat
 
 private var gender: String? = null
 private var height = 0
+
+private var weight = 60
+private var age = 18
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +38,8 @@ class MainActivity : AppCompatActivity() {
             cardMale.isSelected = false
             gender = "FEMALE"
         }
+
+        //----------------------------
         val tvHeight = findViewById<TextView>(R.id.tvHeight)
         val seekHeight = findViewById<SeekBar>(R.id.seekHeight)
 
@@ -46,6 +52,33 @@ class MainActivity : AppCompatActivity() {
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
+
+
+        //----------------------------
+        val tvWeight = findViewById<TextView>(R.id.tvWeight)
+        val tvAge = findViewById<TextView>(R.id.tvAge)
+
+
+        findViewById<ImageButton>(R.id.btnWeightMinus).setOnClickListener {
+            if (weight > 1) {
+                weight--
+                tvWeight.text = weight.toString()
+            }
+        }
+        findViewById<ImageButton>(R.id.btnWeightPlus).setOnClickListener {
+            weight++
+            tvWeight.text = weight.toString()
+        }
+        findViewById<ImageButton>(R.id.btnAgeMinus).setOnClickListener {
+            if (age > 1) {
+                age--
+                tvAge.text = age.toString()
+            }
+        }
+        findViewById<ImageButton>(R.id.btnAgePlus).setOnClickListener {
+            age++
+            tvAge.text = age.toString()
+        }
     }
 
 
