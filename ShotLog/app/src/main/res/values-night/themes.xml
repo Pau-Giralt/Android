@@ -1,0 +1,11 @@
+<resources>
+    <!-- De momento igual que el tema claro. El modo oscuro de verdad se hará con Preferencias. -->
+    <style name="Base.Theme.ShotLog" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/verde_oscuro</item>
+        <item name="colorOnPrimary">@color/beige</item>
+        <item name="colorSecondary">@color/verde_medio</item>
+        <item name="android:colorBackground">@color/beige</item>
+        <item name="colorOnBackground">@color/negro</item>
+        <item name="colorOutline">@color/gris_calido</item>
+    </style>
+</resources>

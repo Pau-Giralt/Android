@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/beige"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="32dp">
+
+        <!-- Logo -->
+        <ImageView
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:src="@drawable/ic_diana"
+            android:contentDescription="@string/logo_descripcion" />
+
+        <!-- Nombre de la app -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/app_name"
+            android:textSize="34sp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/verde_oscuro" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="28dp"
+            android:text="@string/login_titulo"
+            android:textSize="16sp"
+            android:textColor="@color/gris_calido" />
+
+        <!-- Correo -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCorreo"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            app:boxStrokeColor="@color/verde_oscuro"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/correo"
+                android:textColorHint="@color/gris_calido"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/negro" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Contraseña -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilContrasena"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:hintEnabled="false"
+            app:boxStrokeColor="@color/verde_oscuro"
+            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/gris_calido">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/contrasena"
+                android:textColorHint="@color/gris_calido"
+                android:inputType="textPassword"
+                android:textColor="@color/negro" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Olvidé la contraseña -->
+        <TextView
+            android:id="@+id/tvOlvideContrasena"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="4dp"
+            android:padding="8dp"
+            android:text="@string/olvide_contrasena"
+            android:textSize="14sp"
+            android:textColor="@color/verde_medio" />
+
+        <!-- Botón iniciar sesión (pastilla rellena) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnIniciarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/iniciar_sesion"
+            android:textSize="17sp"
+            android:textAllCaps="false"
+            android:textColor="@color/beige"
+            app:backgroundTint="@color/verde_oscuro"
+            app:cornerRadius="30dp" />
+
+        <!-- Ir a registro -->
+        <TextView
+            android:id="@+id/tvRegistrarse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="8dp"
+            android:text="@string/no_tienes_cuenta"
+            android:textSize="15sp"
+            android:textColor="@color/verde_oscuro" />
+
+        <!-- Espacio flexible: empuja el botón de invitado abajo -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="24dp" />
+
+        <!-- Botón invitado (pastilla con borde) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnInvitado"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/continuar_invitado"
+            android:textSize="17sp"
+            android:textAllCaps="false"
+            android:textColor="@color/verde_oscuro"
+            app:strokeColor="@color/verde_oscuro"
+            app:strokeWidth="1.5dp"
+            app:cornerRadius="30dp" />
+
+    </LinearLayout>
+</ScrollView>

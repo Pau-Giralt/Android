@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">ShotLog</string>
+    <string name="login_titulo">Inicia sesión</string>
+    <string name="correo">Correo electrónico</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="olvide_contrasena">¿Has olvidado la contraseña?</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="no_tienes_cuenta">¿No tienes cuenta? Regístrate</string>
+    <string name="continuar_invitado">Continuar como invitado</string>
+    <string name="logo_descripcion">Logo de ShotLog</string>
+    <!-- Registro -->
+    <string name="registro_titulo">Crea tu cuenta</string>
+    <string name="nombre_usuario">Nombre de usuario</string>
+    <string name="repetir_contrasena">Repetir contraseña</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="ya_tienes_cuenta">¿Ya tienes cuenta? Inicia sesión</string>
+    <string name="volver">Volver</string>
+
+    <!-- Errores de validación -->
+    <string name="error_campo_vacio">Este campo es obligatorio</string>
+    <string name="error_nombre_corto">El nombre debe tener al menos 3 caracteres</string>
+    <string name="error_correo_invalido">Introduce un correo válido</string>
+    <string name="error_contrasena_corta">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="error_contrasenas_distintas">Las contraseñas no coinciden</string>
+    <string name="cuenta_creada">Cuenta creada. Ya puedes iniciar sesión</string>
+</resources>
