@@ -1,11 +1,29 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Tema de ShotLog: verde oscuro, beige y negro -->
     <style name="Base.Theme.ShotLog" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/verde_oscuro</item>
         <item name="colorOnPrimary">@color/beige</item>
+        <item name="colorPrimaryContainer">@color/beige_oscuro</item>
+        <item name="colorOnPrimaryContainer">@color/negro</item>
         <item name="colorSecondary">@color/verde_medio</item>
+        <item name="colorOnSecondary">@color/beige</item>
+        <item name="colorSecondaryContainer">@color/beige_oscuro</item>
+        <item name="colorOnSecondaryContainer">@color/negro</item>
         <item name="android:colorBackground">@color/beige</item>
         <item name="colorOnBackground">@color/negro</item>
+        <item name="colorSurface">@color/beige</item>
+        <item name="colorOnSurface">@color/negro</item>
+        <item name="colorOnSurfaceVariant">@color/gris_calido</item>
+        <item name="colorSurfaceContainerLowest">@color/beige_claro</item>
+        <item name="colorSurfaceContainerLow">@color/beige_claro</item>
+        <item name="colorSurfaceContainer">@color/beige_claro</item>
+        <item name="colorSurfaceContainerHigh">@color/beige_claro</item>
+        <item name="colorSurfaceContainerHighest">@color/beige_oscuro</item>
         <item name="colorOutline">@color/gris_calido</item>
+        <item name="colorOutlineVariant">@color/beige_oscuro</item>
+        <item name="colorError">@color/rojo_error</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
     </style>
 
     <style name="Theme.ShotLog" parent="Base.Theme.ShotLog" />

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Una página de la guía de inicio -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingStart="40dp"
+    android:paddingEnd="40dp">
+
+    <FrameLayout
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:background="@drawable/fondo_circulo">
+
+        <ImageView
+            android:id="@+id/ivIconoGuia"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            tools:src="@drawable/ic_camara" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvTituloGuia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.ShotLog.Titulo"
+        tools:text="@string/guia_titulo_2" />
+
+    <TextView
+        android:id="@+id/tvTextoGuia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:textAppearance="@style/TextAppearance.ShotLog.Cuerpo"
+        tools:text="@string/guia_texto_2" />
+
+</LinearLayout>

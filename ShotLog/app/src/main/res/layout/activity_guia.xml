@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Guía de inicio: páginas deslizables (ViewPager2), puntos y botones -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    tools:context=".GuiaActivity">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerGuia"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tabPuntos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Puntos que indican la página actual -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabPuntos"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@id/btnSiguiente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tabBackground="@drawable/punto_guia"
+        app:tabGravity="center"
+        app:tabIndicatorHeight="0dp"
+        app:tabMaxWidth="24dp"
+        app:tabMinWidth="24dp"
+        app:tabMode="fixed"
+        app:tabPaddingEnd="0dp"
+        app:tabPaddingStart="0dp"
+        app:tabRippleColor="@android:color/transparent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaltar"
+        style="@style/Widget.ShotLog.Button.Texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="@string/guia_saltar"
+        app:layout_constraintBottom_toBottomOf="@id/btnSiguiente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnSiguiente" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSiguiente"
+        style="@style/Widget.ShotLog.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:minWidth="160dp"
+        android:text="@string/guia_siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Editar una sesión: resumen, dianas, nombre y notas -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    android:orientation="vertical"
+    tools:context=".EditarSesionActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.ShotLog.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="@string/editar_titulo" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="24dp">
+
+            <!-- Resumen de la sesión -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShotLog.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvTipo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/fondo_etiqueta"
+                        android:paddingStart="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        android:textColor="@color/verde_oscuro"
+                        android:textSize="13sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="@string/tipo_competicion" />
+
+                    <TextView
+                        android:id="@+id/tvDetalle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="12dp"
+                        android:textColor="@color/gris_calido"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toStartOf="@id/tvPuntuacion"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvTipo"
+                        tools:text="04/11/2026 · Pistola" />
+
+                    <TextView
+                        android:id="@+id/tvPuntuacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/verde_oscuro"
+                        android:textSize="34sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="562" />
+
+                    <TextView
+                        android:id="@+id/tvMaximo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gris_calido"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="@id/tvPuntuacion"
+                        app:layout_constraintTop_toBottomOf="@id/tvPuntuacion"
+                        tools:text="de 600" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Dianas de la sesión (se rellenan desde el código) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/dianas"
+                android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/contenedorDianas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+            </HorizontalScrollView>
+
+            <!-- Nombre -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:labelFor="@id/etNombreSesion"
+                android:text="@string/nombre_sesion"
+                android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombreSesion"
+                style="@style/Widget.ShotLog.TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNombreSesion"
+                    style="@style/Widget.ShotLog.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapSentences"
+                    tools:targetApi="o"
+                    tools:text="Preparación Copa Catalunya" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Notas -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:labelFor="@id/etNotas"
+                android:text="@string/notas"
+                android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNotas"
+                style="@style/Widget.ShotLog.TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNotas"
+                    style="@style/Widget.ShotLog.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:hint="@string/notas_hint"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="4"
+                    tools:targetApi="o" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Aviso: en competición solo se editan nombre y notas -->
+            <TextView
+                android:id="@+id/tvAvisoCompeticion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:text="@string/aviso_competicion"
+                android:textColor="@color/gris_calido"
+                android:textSize="14sp"
+                app:drawableStartCompat="@drawable/ic_info" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGuardar"
+                style="@style/Widget.ShotLog.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/guardar_cambios" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEliminar"
+                style="@style/Widget.ShotLog.Button.Peligro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/eliminar_sesion"
+                app:icon="@drawable/ic_borrar"
+                app:iconGravity="textStart" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

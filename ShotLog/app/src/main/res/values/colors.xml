@@ -3,10 +3,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- Paleta de ShotLog -->
     <color name="verde_oscuro">#2E4A3B</color>
     <color name="verde_medio">#3E6A4E</color>
     <color name="beige">#F4EFE6</color>
+    <color name="beige_claro">#FBF8F2</color>
     <color name="beige_oscuro">#D9CBAE</color>
     <color name="negro">#1A1A1A</color>
     <color name="gris_calido">#6B665C</color>
+    <color name="rojo_error">#B3261E</color>
 </resources>

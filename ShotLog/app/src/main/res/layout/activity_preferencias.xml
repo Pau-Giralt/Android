@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Preferencias: tema, modalidad por defecto e idioma -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    android:orientation="vertical"
+    tools:context=".PreferenciasActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.ShotLog.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="@string/preferencias_titulo" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- ===== Apariencia ===== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/pref_apariencia"
+                android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShotLog.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/tvTema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pref_tema"
+                        android:textColor="@color/negro"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/grupoTema"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:checkedButton="@id/btnTemaClaro"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnTemaClaro"
+                            style="@style/Widget.ShotLog.Button.Opcion"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/pref_tema_claro" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnTemaOscuro"
+                            style="@style/Widget.ShotLog.Button.Opcion"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/pref_tema_oscuro" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ===== Tiro ===== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/pref_tiro"
+                android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShotLog.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pref_modalidad"
+                        android:textColor="@color/negro"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/pref_modalidad_ayuda"
+                        android:textColor="@color/gris_calido"
+                        android:textSize="14sp" />
+
+                    <com.google.android.material.button.MaterialButtonToggleGroup
+                        android:id="@+id/grupoModalidad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:checkedButton="@id/btnPistola"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnPistola"
+                            style="@style/Widget.ShotLog.Button.Opcion"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/modalidad_pistola" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnCarabina"
+                            style="@style/Widget.ShotLog.Button.Opcion"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/modalidad_carabina" />
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ===== Idioma ===== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/pref_idioma"
+                android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShotLog.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:id="@+id/grupoIdioma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@id/rbCastellano"
+                    android:paddingStart="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="4dp">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rbCastellano"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="@string/idioma_castellano"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rbCatalan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="@string/idioma_catalan"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rbIngles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="@string/idioma_ingles"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

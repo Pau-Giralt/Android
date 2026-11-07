@@ -2,14 +2,12 @@ package com.example.shotlog
 
 import android.os.Bundle
 import android.util.Patterns
-import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doAfterTextChanged
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -31,11 +29,7 @@ class RegistroActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_registro)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        aplicarMargenesSistema()
 
         tilNombre = findViewById(R.id.tilNombre)
         tilCorreo = findViewById(R.id.tilCorreo)
@@ -55,7 +49,7 @@ class RegistroActivity : AppCompatActivity() {
         findViewById<MaterialButton>(R.id.btnRegistrarse).setOnClickListener { registrarse() }
 
         // Navegación: volver al login
-        findViewById<ImageButton>(R.id.btnVolver).setOnClickListener { finish() }
+        findViewById<MaterialToolbar>(R.id.toolbar).setNavigationOnClickListener { finish() }
         findViewById<TextView>(R.id.tvIrLogin).setOnClickListener { finish() }
     }
 

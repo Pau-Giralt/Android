@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Lista de sesiones (apartado Dianas): buscador, filtros y RecyclerView -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    tools:context=".SesionesActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.ShotLog.Toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/sesiones_titulo" />
+
+    <!-- Buscador por nombre -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilBuscar"
+        style="@style/Widget.ShotLog.TextInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toStartOf="@id/btnFecha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:startIconDrawable="@drawable/ic_buscar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBuscar"
+            style="@style/Widget.ShotLog.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/buscar_sesion"
+            android:imeOptions="actionSearch"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            tools:targetApi="o" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Filtro por fecha -->
+    <ImageButton
+        android:id="@+id/btnFecha"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="12dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/filtrar_fecha"
+        android:src="@drawable/ic_calendario"
+        app:layout_constraintBottom_toBottomOf="@id/tilBuscar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tilBuscar" />
+
+    <!-- Filtros: tipo y modalidad -->
+    <HorizontalScrollView
+        android:id="@+id/scrollFiltros"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilBuscar">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/grupoFiltros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:checkedChip="@id/chipTodas"
+            app:selectionRequired="true"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipTodas"
+                style="@style/Widget.ShotLog.Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/filtro_todas" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipEntrenamiento"
+                style="@style/Widget.ShotLog.Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tipo_entrenamiento" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCompeticion"
+                style="@style/Widget.ShotLog.Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tipo_competicion" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipPistola"
+                style="@style/Widget.ShotLog.Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modalidad_pistola" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCarabina"
+                style="@style/Widget.ShotLog.Chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modalidad_carabina" />
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- Lista dinámica de sesiones -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSesiones"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:clipToPadding="false"
+        android:paddingTop="4dp"
+        android:paddingBottom="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scrollFiltros"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_sesion" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

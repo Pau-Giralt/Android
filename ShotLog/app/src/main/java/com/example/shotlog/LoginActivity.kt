@@ -5,25 +5,23 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
+        aplicarMargenesSistema()
 
-        // Evita que el contenido quede debajo de la barra de estado y de navegación
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-        // Navegación: ir a la pantalla de registro
+        // Ir a la pantalla de registro
         findViewById<TextView>(R.id.tvRegistrarse).setOnClickListener {
             startActivity(Intent(this, RegistroActivity::class.java))
         }
+
+        // De momento (actividad 05) estos botones solo vuelven a la pantalla anterior.
+        // La comprobación del usuario se hará con Firebase más adelante.
+        findViewById<MaterialButton>(R.id.btnIniciarSesion).setOnClickListener { finish() }
+        findViewById<MaterialButton>(R.id.btnInvitado).setOnClickListener { finish() }
     }
 }

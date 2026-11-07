@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Miniatura de una diana en la pantalla de editar sesión -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="88dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/fondo_etiqueta"
+    android:focusable="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <ImageView
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_diana" />
+
+    <TextView
+        android:id="@+id/tvNumDiana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:importantForAccessibility="no"
+        android:textColor="@color/negro"
+        android:textSize="13sp"
+        tools:text="Diana 1" />
+
+    <TextView
+        android:id="@+id/tvPuntosDiana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:importantForAccessibility="no"
+        android:textColor="@color/verde_oscuro"
+        android:textSize="16sp"
+        tools:text="94" />
+</LinearLayout>

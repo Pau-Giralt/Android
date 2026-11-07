@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Un elemento de la lista de sesiones (itemview) -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardSesion"
+    style="@style/Widget.ShotLog.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="6dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/ivDiana"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_diana"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Cadena vertical: nombre, detalle y etiqueta -->
+        <TextView
+            android:id="@+id/tvNombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="12dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:textColor="@color/negro"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tvDetalle"
+            app:layout_constraintEnd_toStartOf="@id/tvPuntuacion"
+            app:layout_constraintStart_toEndOf="@id/ivDiana"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Preparación Copa Catalunya" />
+
+        <TextView
+            android:id="@+id/tvDetalle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/gris_calido"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/tvTipo"
+            app:layout_constraintEnd_toEndOf="@id/tvNombre"
+            app:layout_constraintStart_toStartOf="@id/tvNombre"
+            app:layout_constraintTop_toBottomOf="@id/tvNombre"
+            tools:text="04/11/2026 · Pistola" />
+
+        <TextView
+            android:id="@+id/tvTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/fondo_etiqueta"
+            android:paddingStart="10dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="3dp"
+            android:textColor="@color/verde_oscuro"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvNombre"
+            app:layout_constraintTop_toBottomOf="@id/tvDetalle"
+            tools:text="@string/tipo_competicion" />
+
+        <!-- Puntuación a la derecha -->
+        <TextView
+            android:id="@+id/tvPuntuacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/verde_oscuro"
+            android:textSize="26sp"
+            app:layout_constraintBottom_toTopOf="@id/tvMaximo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="562" />
+
+        <TextView
+            android:id="@+id/tvMaximo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gris_calido"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/tvPuntuacion"
+            app:layout_constraintStart_toStartOf="@id/tvPuntuacion"
+            app:layout_constraintTop_toBottomOf="@id/tvPuntuacion"
+            tools:text="de 600" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
