@@ -148,56 +148,6 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ===== Idioma ===== -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/pref_idioma"
-                android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
-
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.ShotLog.Card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RadioGroup
-                    android:id="@+id/grupoIdioma"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:checkedButton="@id/rbCastellano"
-                    android:paddingStart="8dp"
-                    android:paddingTop="4dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="4dp">
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/rbCastellano"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:minHeight="48dp"
-                        android:text="@string/idioma_castellano"
-                        android:textSize="16sp" />
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/rbCatalan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:minHeight="48dp"
-                        android:text="@string/idioma_catalan"
-                        android:textSize="16sp" />
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/rbIngles"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:minHeight="48dp"
-                        android:text="@string/idioma_ingles"
-                        android:textSize="16sp" />
-                </RadioGroup>
-            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>

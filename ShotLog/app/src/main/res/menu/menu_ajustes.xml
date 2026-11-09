@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tuerca (⚙) de la barra superior: al pulsarla se despliegan las opciones -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/accionAjustes"
+        android:icon="@drawable/ic_ajustes"
+        android:title="@string/ajustes"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menuCuenta"
+                android:icon="@drawable/ic_cuenta"
+                android:title="@string/cuenta" />
+            <item
+                android:id="@+id/menuPreferencias"
+                android:icon="@drawable/ic_preferencias"
+                android:title="@string/preferencias_titulo" />
+            <item
+                android:id="@+id/menuIdioma"
+                android:icon="@drawable/ic_idioma"
+                android:title="@string/idioma" />
+            <item
+                android:id="@+id/menuCerrarSesion"
+                android:icon="@drawable/ic_salir"
+                android:title="@string/cerrar_sesion" />
+        </menu>
+    </item>
+</menu>

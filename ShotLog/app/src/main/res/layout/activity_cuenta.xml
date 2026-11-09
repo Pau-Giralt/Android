@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cuenta: datos del usuario, privacidad, contraseña y cerrar sesión -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    android:orientation="vertical"
+    tools:context=".CuentaActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.ShotLog.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:title="@string/cuenta" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Foto y nombre -->
+            <FrameLayout
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/fondo_circulo">
+
+                <ImageView
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/foto_perfil"
+                    android:src="@drawable/ic_cuenta" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvNombreUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/usuario_ejemplo"
+                android:textAppearance="@style/TextAppearance.ShotLog.Titulo" />
+
+            <TextView
+                android:id="@+id/tvCorreoUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/correo_ejemplo"
+                android:textAppearance="@style/TextAppearance.ShotLog.Cuerpo" />
+
+            <!-- Privacidad -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShotLog.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <com.google.android.material.materialswitch.MaterialSwitch
+                        android:id="@+id/switchPrivada"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="@string/cuenta_privada"
+                        android:textColor="@color/negro"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cuenta_privada_ayuda"
+                        android:textColor="@color/gris_calido"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCambiarContrasena"
+                style="@style/Widget.ShotLog.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/cambiar_contrasena"
+                app:icon="@drawable/ic_candado"
+                app:iconGravity="textStart"
+                app:iconTint="@color/verde_oscuro" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCerrarSesion"
+                style="@style/Widget.ShotLog.Button.Peligro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/cerrar_sesion"
+                app:icon="@drawable/ic_salir"
+                app:iconGravity="textStart" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

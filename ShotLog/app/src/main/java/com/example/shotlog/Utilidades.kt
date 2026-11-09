@@ -18,3 +18,10 @@ fun AppCompatActivity.aplicarMargenesSistema() {
         insets
     }
 }
+
+/** Cierra la sesión: vuelve al Login y borra el historial de pantallas. */
+fun AppCompatActivity.irAlLogin() {
+    val intent = android.content.Intent(this, LoginActivity::class.java)
+    intent.flags = android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
+    startActivity(intent)
+}

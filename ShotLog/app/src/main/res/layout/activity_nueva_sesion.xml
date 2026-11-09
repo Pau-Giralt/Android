@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Nuevo entrenamiento / Nueva competición: elegir modalidad (y formato en competición) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    android:orientation="vertical"
+    tools:context=".NuevaSesionActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.ShotLog.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        tools:title="@string/nuevo_entrenamiento" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Modalidad -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/elige_modalidad"
+                android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/grupoModalidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:checkedButton="@id/btnPistola"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPistola"
+                    style="@style/Widget.ShotLog.Button.Opcion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="64dp"
+                    android:text="@string/modalidad_pistola" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCarabina"
+                    style="@style/Widget.ShotLog.Button.Opcion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="64dp"
+                    android:text="@string/modalidad_carabina" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <!-- Formato (solo en competición) -->
+            <LinearLayout
+                android:id="@+id/seccionFormato"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/elige_formato"
+                    android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
+
+                <RadioGroup
+                    android:id="@+id/grupoFormato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@id/rbFormato60">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rbFormato60"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="@string/formato_60"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="-8dp"
+                        android:text="@string/formato_60_detalle"
+                        android:textColor="@color/gris_calido"
+                        android:textSize="14sp" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rbFormato40"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:minHeight="48dp"
+                        android:text="@string/formato_40"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="-8dp"
+                        android:text="@string/formato_40_detalle"
+                        android:textColor="@color/gris_calido"
+                        android:textSize="14sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <!-- Explicación de cómo funciona -->
+            <TextView
+                android:id="@+id/tvInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/gris_calido"
+                android:textSize="14sp"
+                app:drawableStartCompat="@drawable/ic_info"
+                tools:text="@string/info_entrenamiento" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEmpezar"
+        style="@style/Widget.ShotLog.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/empezar" />
+
+</LinearLayout>

@@ -12,10 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShotLog">
 
-        <!-- Pantalla inicial temporal con botones (actividad 05) -->
+        <!-- Primera pantalla al abrir la app -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,10 +24,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Inicio (con menú lateral y ajustes) -->
         <activity
-            android:name=".LoginActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+            android:name=".MainActivity"
+            android:exported="false" />
+
         <activity
             android:name=".RegistroActivity"
             android:exported="false"
@@ -35,16 +37,25 @@
             android:name=".GuiaActivity"
             android:exported="false" />
         <activity
-            android:name=".PreferenciasActivity"
+            android:name=".NuevaSesionActivity"
             android:exported="false" />
         <activity
             android:name=".SesionesActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".DetalleSesionActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditarSesionActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".CuentaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PreferenciasActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

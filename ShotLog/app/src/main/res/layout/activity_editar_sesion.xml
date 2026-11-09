@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Editar una sesión: resumen, dianas, nombre y notas -->
+<!-- Editar un entreno: nombre y notas -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -31,97 +31,12 @@
             android:paddingEnd="20dp"
             android:paddingBottom="24dp">
 
-            <!-- Resumen de la sesión -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.ShotLog.Card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/tvTipo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/fondo_etiqueta"
-                        android:paddingStart="10dp"
-                        android:paddingTop="3dp"
-                        android:paddingEnd="10dp"
-                        android:paddingBottom="3dp"
-                        android:textColor="@color/verde_oscuro"
-                        android:textSize="13sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="@string/tipo_competicion" />
-
-                    <TextView
-                        android:id="@+id/tvDetalle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="12dp"
-                        android:textColor="@color/gris_calido"
-                        android:textSize="15sp"
-                        app:layout_constraintEnd_toStartOf="@id/tvPuntuacion"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvTipo"
-                        tools:text="04/11/2026 · Pistola" />
-
-                    <TextView
-                        android:id="@+id/tvPuntuacion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:textColor="@color/verde_oscuro"
-                        android:textSize="34sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:text="562" />
-
-                    <TextView
-                        android:id="@+id/tvMaximo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/gris_calido"
-                        android:textSize="13sp"
-                        app:layout_constraintEnd_toEndOf="@id/tvPuntuacion"
-                        app:layout_constraintTop_toBottomOf="@id/tvPuntuacion"
-                        tools:text="de 600" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Dianas de la sesión (se rellenan desde el código) -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/dianas"
-                android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:id="@+id/contenedorDianas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" />
-            </HorizontalScrollView>
-
             <!-- Nombre -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:labelFor="@id/etNombreSesion"
                 android:text="@string/nombre_sesion"
@@ -194,16 +109,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:text="@string/guardar_cambios" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEliminar"
-                style="@style/Widget.ShotLog.Button.Peligro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="@string/eliminar_sesion"
-                app:icon="@drawable/ic_borrar"
-                app:iconGravity="textStart" />
 
         </LinearLayout>
     </ScrollView>

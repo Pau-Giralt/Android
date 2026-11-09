@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 
-/** Lista de sesiones guardadas (apartado Dianas). */
+/** Mis entrenos: lista de sesiones guardadas. */
 class SesionesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,11 +21,11 @@ class SesionesActivity : AppCompatActivity() {
 
         findViewById<MaterialToolbar>(R.id.toolbar).setNavigationOnClickListener { finish() }
 
-        // De momento se muestran datos de ejemplo. Al tocar una sesión se abre la pantalla de edición.
+        // De momento se muestran datos de ejemplo. Al tocar un entreno se abre su detalle.
         findViewById<RecyclerView>(R.id.rvSesiones).adapter =
             SesionesAdapter(DatosEjemplo.sesiones) { posicion ->
-                val intent = Intent(this, EditarSesionActivity::class.java)
-                intent.putExtra(EditarSesionActivity.EXTRA_POSICION, posicion)
+                val intent = Intent(this, DetalleSesionActivity::class.java)
+                intent.putExtra(DetalleSesionActivity.EXTRA_POSICION, posicion)
                 startActivity(intent)
             }
     }

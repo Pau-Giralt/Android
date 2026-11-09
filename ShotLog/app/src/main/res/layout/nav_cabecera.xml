@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cabecera del menú lateral -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/verde_oscuro"
+    android:orientation="vertical"
+    android:paddingStart="24dp"
+    android:paddingTop="32dp"
+    android:paddingEnd="24dp"
+    android:paddingBottom="20dp">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="@string/logo_descripcion"
+        android:src="@drawable/ic_diana" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/app_name"
+        android:textColor="@color/beige"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tvUsuarioMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/modo_invitado"
+        android:textColor="@color/beige_oscuro"
+        android:textSize="14sp" />
+</LinearLayout>

@@ -2,17 +2,29 @@
     <string name="app_name">ShotLog</string>
     <string name="logo_descripcion">Logo de ShotLog</string>
     <string name="volver">Volver</string>
+    <string name="proximamente">Disponible próximamente</string>
 
-    <!-- Pantalla inicial (temporal, hasta tener el menú de la actividad 06) -->
-    <string name="pantallas_titulo">Pantallas de la aplicación</string>
-    <string name="pantallas_nota">Pantalla temporal para navegar. En la actividad 06 se sustituirá por el menú lateral.</string>
-    <string name="ir_login">Inicio de sesión</string>
-    <string name="ir_registro">Registro</string>
-    <string name="ir_guia">Guía de inicio</string>
-    <string name="ir_preferencias">Preferencias</string>
-    <string name="ir_sesiones">Mis sesiones (lista)</string>
-    <string name="ir_editar">Editar sesión</string>
-    <string name="ver_guia">Ver la guía de inicio</string>
+    <!-- Inicio -->
+    <string name="abrir_menu">Abrir el menú</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="inicio_saludo">¡Hola!</string>
+    <string name="inicio_pregunta">¿Qué quieres hacer hoy?</string>
+    <string name="nuevo_entrenamiento">Nuevo entrenamiento</string>
+    <string name="nueva_competicion">Nueva competición</string>
+    <string name="mis_entrenos">Mis entrenos</string>
+    <string name="guia_inicio">Guía de inicio</string>
+    <string name="ultima_sesion">Tu última sesión</string>
+    <string name="inicio">Inicio</string>
+    <string name="amigos">Amigos</string>
+    <string name="modo_invitado">Modo invitado</string>
+
+    <!-- Menú de ajustes (tuerca) -->
+    <string name="cuenta">Cuenta</string>
+    <string name="idioma">Idioma</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cerrar_sesion_pregunta">¿Quieres cerrar la sesión?</string>
+
 
     <!-- Login -->
     <string name="login_titulo">Inicia sesión</string>
@@ -63,13 +75,12 @@
     <string name="pref_modalidad_ayuda">Saldrá marcada al empezar un entrenamiento o una competición.</string>
     <string name="modalidad_pistola">Pistola</string>
     <string name="modalidad_carabina">Carabina</string>
-    <string name="pref_idioma">Idioma</string>
     <string name="idioma_castellano">Castellano</string>
     <string name="idioma_catalan">Català</string>
     <string name="idioma_ingles">English</string>
 
     <!-- Lista de sesiones -->
-    <string name="sesiones_titulo">Mis sesiones</string>
+    <string name="sesiones_titulo">Mis entrenos</string>
     <string name="buscar_sesion">Buscar por nombre</string>
     <string name="filtrar_fecha">Filtrar por fecha</string>
     <string name="filtro_todas">Todas</string>
@@ -78,6 +89,31 @@
     <string name="sesion_detalle">%1$s · %2$s</string>
     <string name="puntos">puntos</string>
     <string name="de_maximo">de %1$d</string>
+
+    <!-- Nueva sesión -->
+    <string name="elige_modalidad">Elige la modalidad</string>
+    <string name="elige_formato">Elige el formato</string>
+    <string name="formato_60">60 disparos</string>
+    <string name="formato_40">40 disparos</string>
+    <string name="formato_60_detalle">6 dianas</string>
+    <string name="formato_40_detalle">4 dianas</string>
+    <string name="info_entrenamiento">Puedes escanear todas las dianas que quieras, de 10 disparos cada una.</string>
+    <string name="info_competicion">Escanearás las dianas en orden. Al terminar, la sesión se guarda con su puntuación.</string>
+    <string name="empezar">Empezar</string>
+    <string name="empezar_proximamente">La sesión de tiro con la cámara llegará en la siguiente fase</string>
+
+    <!-- Detalle de la sesión -->
+    <string name="detalle_titulo">Detalle del entreno</string>
+    <string name="sin_notas">Esta sesión no tiene notas.</string>
+    <string name="editar">Editar</string>
+
+    <!-- Cuenta -->
+    <string name="usuario_ejemplo">Pau</string>
+    <string name="correo_ejemplo">usuario@correo.com</string>
+    <string name="cuenta_privada">Cuenta privada</string>
+    <string name="cuenta_privada_ayuda">Si está activada, tendrás que aceptar a quien quiera seguirte.</string>
+    <string name="cambiar_contrasena">Cambiar contraseña</string>
+    <string name="foto_perfil">Foto de perfil</string>
 
     <!-- Editar sesión -->
     <string name="editar_titulo">Editar sesión</string>

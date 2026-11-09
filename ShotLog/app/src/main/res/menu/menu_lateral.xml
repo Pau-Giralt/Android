@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Opciones del menú lateral (☰) -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navInicio"
+            android:icon="@drawable/ic_inicio"
+            android:title="@string/inicio" />
+        <item
+            android:id="@+id/navNuevoEntrenamiento"
+            android:icon="@drawable/ic_anadir"
+            android:title="@string/nuevo_entrenamiento" />
+        <item
+            android:id="@+id/navNuevaCompeticion"
+            android:icon="@drawable/ic_trofeo"
+            android:title="@string/nueva_competicion" />
+        <item
+            android:id="@+id/navMisEntrenos"
+            android:icon="@drawable/ic_lista"
+            android:title="@string/mis_entrenos" />
+        <item
+            android:id="@+id/navAmigos"
+            android:icon="@drawable/ic_amigos"
+            android:title="@string/amigos" />
+    </group>
+    <group android:id="@+id/grupoAyuda">
+        <item
+            android:id="@+id/navGuia"
+            android:icon="@drawable/ic_ayuda"
+            android:title="@string/guia_inicio" />
+    </group>
+</menu>
