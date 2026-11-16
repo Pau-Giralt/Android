@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Splash: la diana aparece, un disparo impacta en el 10 y sale el nombre -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".SplashActivity">
+
+    <!-- Diana + impacto + onda, unos encima de otros -->
+    <FrameLayout
+        android:id="@+id/contenedorDiana"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:contentDescription="@string/logo_descripcion">
+
+        <ImageView
+            android:id="@+id/ivDiana"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_diana"
+            android:transitionName="@string/transicion_logo" />
+
+        <View
+            android:id="@+id/vOnda"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:alpha="0"
+            android:background="@drawable/splash_onda"
+            android:importantForAccessibility="no" />
+
+        <View
+            android:id="@+id/vBala"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_gravity="center"
+            android:alpha="0"
+            android:background="@drawable/splash_bala"
+            android:importantForAccessibility="no" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvNombreSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:alpha="0"
+        android:text="@string/app_name"
+        android:textAppearance="@style/TextAppearance.ShotLog.Logo" />
+
+</LinearLayout>

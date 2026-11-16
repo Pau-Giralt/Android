@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Tema de ShotLog: verde oscuro, beige y negro -->
     <style name="Base.Theme.ShotLog" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowActivityTransitions">true</item>
         <item name="colorPrimary">@color/verde_oscuro</item>
         <item name="colorOnPrimary">@color/beige</item>
         <item name="colorPrimaryContainer">@color/beige_oscuro</item>
@@ -27,4 +28,11 @@
     </style>
 
     <style name="Theme.ShotLog" parent="Base.Theme.ShotLog" />
+
+    <!-- Pantalla de arranque del sistema (Android 12+): solo fondo beige, luego empieza nuestra animación -->
+    <style name="Theme.ShotLog.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/beige</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_vacio</item>
+        <item name="postSplashScreenTheme">@style/Theme.ShotLog</item>
+    </style>
 </resources>

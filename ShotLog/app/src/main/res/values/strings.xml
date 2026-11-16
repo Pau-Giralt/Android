@@ -2,6 +2,7 @@
     <string name="app_name">ShotLog</string>
     <string name="logo_descripcion">Logo de ShotLog</string>
     <string name="volver">Volver</string>
+    <string name="transicion_logo" translatable="false">logo_shotlog</string>
     <string name="proximamente">Disponible próximamente</string>
 
     <!-- Inicio -->
