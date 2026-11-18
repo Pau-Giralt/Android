@@ -52,7 +52,7 @@
 
     <style name="Widget.ShotLog.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="hintEnabled">false</item>
-        <item name="boxStrokeColor">@color/verde_oscuro</item>
+        <item name="boxStrokeColor">@color/borde_campo_texto</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeWidthFocused">2dp</item>
         <item name="boxCornerRadiusTopStart">10dp</item>
@@ -131,5 +131,38 @@
         <item name="android:textColor">@color/negro</item>
         <item name="chipStrokeColor">@color/beige_oscuro</item>
         <item name="chipBackgroundColor">@color/chip_fondo</item>
+    </style>
+
+    <!-- ===== Pantalla de registro (oscura) ===== -->
+
+    <!-- Botón grande REGISTRAR TIRO (el color cambia desde el código al activarse) -->
+    <style name="Widget.ShotLog.Button.Sius" parent="Widget.Material3.Button">
+        <item name="android:minHeight">68dp</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
+    <style name="Widget.ShotLog.Button.SiusSecundario" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:minHeight">68dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/sius_texto</item>
+        <item name="strokeColor">@color/sius_borde</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
+    <style name="TextAppearance.ShotLog.SiusEtiqueta" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/sius_texto_secundario</item>
+    </style>
+
+    <style name="TextAppearance.ShotLog.SiusValor" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/sius_texto</item>
     </style>
 </resources>

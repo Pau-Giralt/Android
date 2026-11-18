@@ -1,6 +1,7 @@
 package com.example.shotlog
 
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -24,4 +25,12 @@ fun AppCompatActivity.irAlLogin() {
     val intent = android.content.Intent(this, LoginActivity::class.java)
     intent.flags = android.content.Intent.FLAG_ACTIVITY_NEW_TASK or android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
     startActivity(intent)
+}
+
+/**
+ * Pantalla completa (edge-to-edge). Los iconos de la barra de estado se ponen oscuros
+ * con el tema claro y claros con el tema oscuro.
+ */
+fun androidx.activity.ComponentActivity.pantallaCompleta() {
+    enableEdgeToEdge()
 }

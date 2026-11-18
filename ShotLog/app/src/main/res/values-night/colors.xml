@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Paleta de ShotLog en MODO OSCURO.
+        Se usan los mismos nombres que en el tema claro, pero cada uno cumple su papel en oscuro:
+        - beige = fondo de las pantallas (oscuro)
+        - beige_claro = tarjetas · beige_oscuro = etiquetas y bordes
+        - negro = texto principal (claro) · gris_calido = texto secundario
+        - verde_oscuro = color principal: títulos, iconos y botones (verde claro en oscuro)
+    -->
+    <color name="verde_oscuro">#A8D5B5</color>
+    <color name="verde_medio">#8CC49E</color>
+    <color name="beige">#121614</color>
+    <color name="beige_claro">#1B211E</color>
+    <color name="beige_oscuro">#2E3833</color>
+    <color name="negro">#ECE8E0</color>
+    <color name="gris_calido">#B7B1A6</color>
+    <color name="borde_campo">@color/verde_oscuro</color>
+    <color name="rojo_error">#F2B8B5</color>
+
+    <!-- Pantalla de registro de tiros en modo oscuro: estilo blanco electrónico SIUS -->
+    <color name="sius_fondo">#0F1311</color>
+    <color name="sius_panel">#1B221E</color>
+    <color name="sius_borde">#34403A</color>
+    <color name="sius_texto">#F2F2EE</color>
+    <color name="sius_texto_secundario">#A9B3AD</color>
+    <color name="sius_registro">#9CCC65</color>
+    <color name="sius_chip">#CC0F1311</color>
+</resources>

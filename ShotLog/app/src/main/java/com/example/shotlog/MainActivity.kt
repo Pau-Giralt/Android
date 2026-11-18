@@ -3,13 +3,13 @@ package com.example.shotlog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.shotlog.datos.RepositorioEntrenos
+import com.example.shotlog.ui.SesionesAdapter
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationView
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        pantallaCompleta()
         setContentView(R.layout.activity_main)
         aplicarMargenesSistema()
 
@@ -66,21 +66,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.btnMisEntrenos).setOnClickListener { abrir(SesionesActivity::class.java) }
         findViewById<View>(R.id.btnGuia).setOnClickListener { abrir(GuiaActivity::class.java) }
 
-        // Tarjeta con la última sesión
-        val ultima = DatosEjemplo.sesiones.first()
-        val tarjeta = findViewById<View>(R.id.ultimaSesion)
-        tarjeta.findViewById<TextView>(R.id.tvNombre).text = ultima.nombre
-        tarjeta.findViewById<TextView>(R.id.tvDetalle).text =
-            getString(R.string.sesion_detalle, ultima.fecha, ultima.modalidad)
-        tarjeta.findViewById<TextView>(R.id.tvTipo).setText(
-            if (ultima.esCompeticion) R.string.tipo_competicion else R.string.tipo_entrenamiento
-        )
-        tarjeta.findViewById<TextView>(R.id.tvPuntuacion).text = ultima.puntuacion.toString()
-        tarjeta.findViewById<TextView>(R.id.tvMaximo).text = getString(R.string.de_maximo, ultima.maximo)
-        tarjeta.setOnClickListener {
-            startActivity(Intent(this, DetalleSesionActivity::class.java).putExtra(DetalleSesionActivity.EXTRA_POSICION, 0))
-        }
-
         // Si el menú lateral está abierto, "atrás" lo cierra
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -92,6 +77,25 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    /** La tarjeta "Tu última sesión" se actualiza cada vez que se vuelve a Inicio. */
+    override fun onResume() {
+        super.onResume()
+        val tarjeta = findViewById<View>(R.id.ultimaSesion)
+        val titulo = findViewById<View>(R.id.tvTituloUltima)
+        val ultimo = RepositorioEntrenos.ultimo()
+        tarjeta.visibility = if (ultimo == null) View.GONE else View.VISIBLE
+        titulo.visibility = tarjeta.visibility
+        if (ultimo != null) {
+            SesionesAdapter.rellenarTarjeta(tarjeta, ultimo)
+            tarjeta.setOnClickListener {
+                startActivity(
+                    Intent(this, DetalleSesionActivity::class.java)
+                        .putExtra(DetalleSesionActivity.EXTRA_ID, ultimo.id)
+                )
+            }
+        }
     }
 
     private fun abrir(pantalla: Class<*>) {

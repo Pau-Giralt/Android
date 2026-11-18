@@ -2,63 +2,41 @@ package com.example.shotlog
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shotlog.datos.RepositorioEntrenos
+import com.example.shotlog.ui.SesionesAdapter
 import com.google.android.material.appbar.MaterialToolbar
 
-/** Mis entrenos: lista de sesiones guardadas. */
+/** Mis entrenos: lista de entrenos guardados. */
 class SesionesActivity : AppCompatActivity() {
+
+    private val adapter = SesionesAdapter { entreno ->
+        startActivity(
+            Intent(this, DetalleSesionActivity::class.java)
+                .putExtra(DetalleSesionActivity.EXTRA_ID, entreno.id)
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        pantallaCompleta()
         setContentView(R.layout.activity_sesiones)
         aplicarMargenesSistema()
 
         findViewById<MaterialToolbar>(R.id.toolbar).setNavigationOnClickListener { finish() }
+        findViewById<RecyclerView>(R.id.rvSesiones).adapter = adapter
 
-        // De momento se muestran datos de ejemplo. Al tocar un entreno se abre su detalle.
-        findViewById<RecyclerView>(R.id.rvSesiones).adapter =
-            SesionesAdapter(DatosEjemplo.sesiones) { posicion ->
-                val intent = Intent(this, DetalleSesionActivity::class.java)
-                intent.putExtra(DetalleSesionActivity.EXTRA_POSICION, posicion)
-                startActivity(intent)
-            }
-    }
-}
-
-class SesionesAdapter(
-    private val sesiones: List<Sesion>,
-    private val alPulsar: (Int) -> Unit
-) : RecyclerView.Adapter<SesionesAdapter.SesionViewHolder>() {
-
-    class SesionViewHolder(vista: View) : RecyclerView.ViewHolder(vista) {
-        val nombre: TextView = vista.findViewById(R.id.tvNombre)
-        val detalle: TextView = vista.findViewById(R.id.tvDetalle)
-        val tipo: TextView = vista.findViewById(R.id.tvTipo)
-        val puntuacion: TextView = vista.findViewById(R.id.tvPuntuacion)
-        val maximo: TextView = vista.findViewById(R.id.tvMaximo)
+        // Añadir: abre la pantalla de nuevo entreno
+        findViewById<View>(R.id.fabNuevoEntreno).setOnClickListener {
+            startActivity(Intent(this, NuevaSesionActivity::class.java))
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SesionViewHolder {
-        val vista = LayoutInflater.from(parent.context).inflate(R.layout.item_sesion, parent, false)
-        return SesionViewHolder(vista)
+    /** Al volver de añadir, editar o eliminar, la lista se actualiza con animación. */
+    override fun onResume() {
+        super.onResume()
+        adapter.submitList(RepositorioEntrenos.todos())
     }
-
-    override fun onBindViewHolder(holder: SesionViewHolder, position: Int) {
-        val sesion = sesiones[position]
-        val contexto = holder.itemView.context
-        holder.nombre.text = sesion.nombre
-        holder.detalle.text = contexto.getString(R.string.sesion_detalle, sesion.fecha, sesion.modalidad)
-        holder.tipo.setText(if (sesion.esCompeticion) R.string.tipo_competicion else R.string.tipo_entrenamiento)
-        holder.puntuacion.text = sesion.puntuacion.toString()
-        holder.maximo.text = contexto.getString(R.string.de_maximo, sesion.maximo)
-        holder.itemView.setOnClickListener { alPulsar(holder.bindingAdapterPosition) }
-    }
-
-    override fun getItemCount(): Int = sesiones.size
 }

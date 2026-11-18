@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- De momento igual que el tema claro. El modo oscuro se hará con Preferencias. -->
-    <style name="Base.Theme.ShotLog" parent="Theme.Material3.Light.NoActionBar">
+    <!-- Tema oscuro: mismos atributos que el claro; los colores salen de values-night/colors.xml -->
+    <style name="Base.Theme.ShotLog" parent="Theme.Material3.Dark.NoActionBar">
         <item name="android:windowActivityTransitions">true</item>
         <item name="colorPrimary">@color/verde_oscuro</item>
         <item name="colorOnPrimary">@color/beige</item>
@@ -23,8 +23,8 @@
         <item name="colorOutline">@color/gris_calido</item>
         <item name="colorOutlineVariant">@color/beige_oscuro</item>
         <item name="colorError">@color/rojo_error</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
     </style>
 
     <!-- Pantalla de arranque del sistema (Android 12+): solo fondo beige, luego empieza nuestra animación -->

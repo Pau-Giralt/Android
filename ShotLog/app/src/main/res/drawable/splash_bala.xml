@@ -2,5 +2,5 @@
 <!-- El impacto: punto claro en el centro de la diana -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
-    <solid android:color="@color/beige" />
+    <solid android:color="@color/diana_linea_clara" />
 </shape>

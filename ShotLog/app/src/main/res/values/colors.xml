@@ -3,7 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Paleta de ShotLog -->
+    <!-- Paleta de ShotLog (tema claro). La versión oscura está en values-night/colors.xml -->
     <color name="verde_oscuro">#2E4A3B</color>
     <color name="verde_medio">#3E6A4E</color>
     <color name="beige">#F4EFE6</color>
@@ -11,5 +11,28 @@
     <color name="beige_oscuro">#D9CBAE</color>
     <color name="negro">#1A1A1A</color>
     <color name="gris_calido">#6B665C</color>
+    <!-- Borde de los campos de texto sin seleccionar: gris en claro, verde en oscuro -->
+    <color name="borde_campo">@color/gris_calido</color>
     <color name="rojo_error">#B3261E</color>
+
+    <!-- Pantalla de registro de tiros: versión clara (la oscura, estilo SIUS, está en values-night) -->
+    <color name="sius_fondo">#F4EFE6</color>
+    <color name="sius_panel">#FBF8F2</color>
+    <color name="sius_borde">#D9CBAE</color>
+    <color name="sius_texto">#1A1A1A</color>
+    <color name="sius_texto_secundario">#6B665C</color>
+    <color name="sius_registro">#7CB342</color>
+    <color name="sius_chip">#E6FBF8F2</color>
+
+    <!-- Colores que NO cambian con el tema (logo, textos sobre fondos siempre claros) -->
+    <color name="negro_fijo">#1A1A1A</color>
+    <color name="logo_papel">#D9CBAE</color>
+
+    <!-- Diana -->
+    <color name="diana_papel">#EFE6D2</color>
+    <color name="diana_negro">#161616</color>
+    <color name="diana_linea_clara">#F4EFE6</color>
+    <color name="impacto_anterior">#7CB342</color>
+    <color name="impacto_ultimo">#FF7043</color>
+    <color name="impacto_contorno">#FFFFFF</color>
 </resources>

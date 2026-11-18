@@ -125,7 +125,7 @@
         android:layout_marginTop="4dp"
         android:clipToPadding="false"
         android:paddingTop="4dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="96dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,5 +133,19 @@
         app:layout_constraintTop_toBottomOf="@id/scrollFiltros"
         tools:itemCount="5"
         tools:listitem="@layout/item_sesion" />
+
+    <!-- Añadir un entreno nuevo -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabNuevoEntreno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/nuevo_entreno"
+        android:textColor="@color/beige"
+        app:backgroundTint="@color/verde_oscuro"
+        app:icon="@drawable/ic_anadir"
+        app:iconTint="@color/beige"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

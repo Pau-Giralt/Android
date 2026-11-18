@@ -2,7 +2,6 @@ package com.example.shotlog
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
@@ -11,7 +10,7 @@ import com.google.android.material.button.MaterialButton
 class CuentaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        pantallaCompleta()
         setContentView(R.layout.activity_cuenta)
         aplicarMargenesSistema()
 

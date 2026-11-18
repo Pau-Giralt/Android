@@ -89,7 +89,7 @@
     <string name="tipo_competicion">Competición</string>
     <string name="sesion_detalle">%1$s · %2$s</string>
     <string name="puntos">puntos</string>
-    <string name="de_maximo">de %1$d</string>
+    <string name="de_maximo">de %1$s</string>
 
     <!-- Nueva sesión -->
     <string name="elige_modalidad">Elige la modalidad</string>
@@ -101,7 +101,6 @@
     <string name="info_entrenamiento">Puedes escanear todas las dianas que quieras, de 10 disparos cada una.</string>
     <string name="info_competicion">Escanearás las dianas en orden. Al terminar, la sesión se guarda con su puntuación.</string>
     <string name="empezar">Empezar</string>
-    <string name="empezar_proximamente">La sesión de tiro con la cámara llegará en la siguiente fase</string>
 
     <!-- Detalle de la sesión -->
     <string name="detalle_titulo">Detalle del entreno</string>
@@ -119,7 +118,6 @@
     <!-- Editar sesión -->
     <string name="editar_titulo">Editar sesión</string>
     <string name="nombre_sesion">Nombre de la sesión</string>
-    <string name="dianas">Dianas</string>
     <string name="notas">Notas</string>
     <string name="notas_hint">Técnica, material, sensaciones…</string>
     <string name="aviso_competicion">En una competición solo se pueden editar el nombre y las notas.</string>
@@ -129,8 +127,48 @@
     <string name="eliminar_mensaje">Se borrarán sus dianas y notas. No se puede deshacer.</string>
     <string name="eliminar">Eliminar</string>
     <string name="cancelar">Cancelar</string>
-    <string name="cambios_guardados">Cambios guardados</string>
-    <string name="sesion_eliminada">Sesión eliminada</string>
-    <string name="diana_numero">Diana %1$d</string>
-    <string name="diana_descripcion">Diana %1$d, %2$d puntos</string>
+
+    <!-- Nuevo entreno -->
+    <string name="elige_modo">Elige el modo</string>
+    <string name="nuevo_entreno">Nuevo entreno</string>
+
+    <!-- Registro de tiros -->
+    <string name="registro_tiros_titulo">%1$s · %2$s</string>
+    <string name="registrar_tiro">REGISTRAR TIRO</string>
+    <string name="registrando">REGISTRANDO · TOCA LA DIANA</string>
+    <string name="aviso_registro">Toca la diana donde ha impactado el disparo</string>
+    <string name="zoom_nivel">Zoom %1$d/3</string>
+    <string name="zoom_ayuda">Toca la diana para ampliar</string>
+    <string name="dato_disparo">Disparo</string>
+    <string name="dato_ultimo">Último</string>
+    <string name="dato_serie">Serie %1$d</string>
+    <string name="total_disparos">Total · %1$d disparos</string>
+    <string name="disparo_de_serie">%1$d/10</string>
+    <string name="sin_valor">–</string>
+    <string name="series_competicion">Series</string>
+    <string name="serie_corta">S%1$d %2$s</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="deshacer">Deshacer el último disparo</string>
+    <string name="nada_que_deshacer">No hay disparos que deshacer</string>
+    <string name="sin_disparos">Registra al menos un disparo</string>
+    <string name="competicion_terminada">Competición terminada: %1$d disparos</string>
+    <string name="salir_titulo">¿Salir sin guardar?</string>
+    <string name="salir_mensaje">Se perderán los disparos registrados.</string>
+    <string name="salir">Salir</string>
+    <string name="descripcion_diana">Diana de %1$s, zoom %2$d de 3, %3$d impactos</string>
+
+    <!-- Guardar entreno -->
+    <string name="guardar_titulo">Guardar entreno</string>
+    <string name="nombre_por_defecto">%1$s %2$s</string>
+    <string name="guardar">Guardar</string>
+
+    <!-- Eventos de la lista (Toast) -->
+    <string name="entreno_anadido">Entreno añadido</string>
+    <string name="entreno_modificado">Entreno modificado</string>
+    <string name="entreno_eliminado">Entreno eliminado</string>
+
+    <!-- Series -->
+    <string name="series">Series</string>
+    <string name="serie_numero">Serie %1$d</string>
+    <string name="serie_descripcion">Serie %1$d: %2$s puntos</string>
 </resources>

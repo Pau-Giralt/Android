@@ -64,6 +64,43 @@
                     android:text="@string/modalidad_carabina" />
             </com.google.android.material.button.MaterialButtonToggleGroup>
 
+            <!-- Modo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/elige_modo"
+                android:textAppearance="@style/TextAppearance.ShotLog.Seccion" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/grupoModo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:checkedButton="@id/btnModoEntrenamiento"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnModoEntrenamiento"
+                    style="@style/Widget.ShotLog.Button.Opcion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="64dp"
+                    android:text="@string/tipo_entrenamiento" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnModoCompeticion"
+                    style="@style/Widget.ShotLog.Button.Opcion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="64dp"
+                    android:text="@string/tipo_competicion" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
             <!-- Formato (solo en competición) -->
             <LinearLayout
                 android:id="@+id/seccionFormato"

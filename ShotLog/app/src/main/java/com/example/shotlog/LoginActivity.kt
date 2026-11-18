@@ -9,7 +9,6 @@ import android.transition.Fade
 import android.transition.TransitionSet
 import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 
@@ -17,7 +16,7 @@ import com.google.android.material.button.MaterialButton
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        pantallaCompleta()
         prepararTransicionDesdeSplash()
         setContentView(R.layout.activity_login)
         aplicarMargenesSistema()

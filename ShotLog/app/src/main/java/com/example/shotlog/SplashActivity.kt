@@ -8,7 +8,6 @@ import android.provider.Settings
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -34,7 +33,7 @@ class SplashActivity : AppCompatActivity() {
         // Quita la pantalla de arranque del sistema (Android 12+) en cuanto se dibuja la nuestra
         installSplashScreen()
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        pantallaCompleta()
         setContentView(R.layout.activity_splash)
 
         val contenedor = findViewById<View>(R.id.contenedorDiana)
