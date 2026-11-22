@@ -25,6 +25,7 @@ En aquesta activitat he fet:
 - [6. Preferències i tema fosc](#6-preferències-i-tema-fosc)
 - [7. Accessibilitat i usabilitat](#7-accessibilitat-i-usabilitat)
 - [8. Llenguatge Kotlin utilitzat](#8-llenguatge-kotlin-utilitzat)
+- [Documentació del codi (Dokka / Javadoc)](#documentació-del-codi-dokka--javadoc)
 - [Estructura del codi](#estructura-del-codi)
 - [Pendent per a properes activitats](#pendent-per-a-properes-activitats)
 
@@ -318,6 +319,25 @@ fun Long.comoFecha(): String =
 
 // ús: entreno.fecha.comoFecha()  →  "04/11/2026"
 ```
+
+---
+
+## Documentació del codi (Dokka / Javadoc)
+
+El codi està escrit en **Kotlin**, i l'eina `javadoc` només llegeix fitxers Java. Per això faig servir **Dokka**, l'eina oficial de JetBrains per documentar Kotlin. Llegeix els mateixos comentaris `/** ... */` (KDoc, l'equivalent de Javadoc) i genera la documentació en dos formats:
+
+| Format | Carpeta | Com obrir-la |
+|---|---|---|
+| HTML de Dokka | `docs/html` | `docs/html/index.html` |
+| Estil Javadoc | `docs/javadoc` | `docs/javadoc/index.html` |
+
+Per generar-la (des de la carpeta `ShotLog`):
+
+```
+gradlew :app:dokkaGenerate
+```
+
+La configuració està a `app/build.gradle.kts`, al bloc `dokka { }`. El text de presentació del mòdul i de cada paquet està a `app/Module.md`.
 
 ---
 

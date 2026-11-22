@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.dokka.javadoc)
 }
 
 android {
@@ -44,4 +46,21 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+}
+
+// Documentació del codi amb Dokka (l'eina de JetBrains per a Kotlin, equivalent a Javadoc).
+// Es genera amb:  gradlew :app:dokkaGenerate
+//   - docs/html     -> documentació en format web de Dokka
+//   - docs/javadoc  -> la mateixa documentació amb l'aspecte de Javadoc
+dokka {
+    moduleName.set("ShotLog")
+    dokkaPublications.named("html") {
+        outputDirectory.set(rootProject.layout.projectDirectory.dir("docs/html"))
+    }
+    dokkaPublications.named("javadoc") {
+        outputDirectory.set(rootProject.layout.projectDirectory.dir("docs/javadoc"))
+    }
+    dokkaSourceSets.configureEach {
+        includes.from("Module.md")
+    }
 }

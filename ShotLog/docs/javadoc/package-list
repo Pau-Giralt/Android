@@ -1,0 +1,11 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+$dokka.location:com.example.shotlog.ui/SeriesAdapter.SerieViewHolder///PointingToDeclaration/com/example/shotlog/ui/SeriesAdapter.SerieViewHolder.html
+$dokka.location:com.example.shotlog.ui/SesionesAdapter.Companion///PointingToDeclaration/com/example/shotlog/ui/SesionesAdapter.Companion.html
+$dokka.location:com.example.shotlog.ui/SesionesAdapter.SesionViewHolder///PointingToDeclaration/com/example/shotlog/ui/SesionesAdapter.SesionViewHolder.html
+$dokka.location:com.example.shotlog/GuiaAdapter.PaginaViewHolder///PointingToDeclaration/com/example/shotlog/GuiaAdapter.PaginaViewHolder.html
+com.example.shotlog
+com.example.shotlog.datos
+com.example.shotlog.modelo
+com.example.shotlog.tiro
+com.example.shotlog.ui

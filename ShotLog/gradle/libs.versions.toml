@@ -12,6 +12,7 @@ viewpager2 = "1.1.0"
 recyclerview = "1.4.0"
 drawerlayout = "1.2.0"
 splashscreen = "1.0.1"
+dokka = "2.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -29,4 +30,5 @@ androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscree
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "dokka" }
