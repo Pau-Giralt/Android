@@ -10,7 +10,7 @@ import com.example.shotlog.ui.SesionesAdapter
 import com.google.android.material.appbar.MaterialToolbar
 
 /** Mis entrenos: lista de entrenos guardados. */
-class SesionesActivity : AppCompatActivity() {
+class   SesionesActivity : AppCompatActivity() {
 
     private val adapter = SesionesAdapter { entreno ->
         startActivity(

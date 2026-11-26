@@ -9,11 +9,25 @@ import android.transition.Fade
 import android.transition.TransitionSet
 import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
+import com.example.shotlog.viewmodel.LoginViewModel
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
-/** Primera pantalla: iniciar sesión, registrarse o entrar como invitado. */
+/**
+ * Primera pantalla: iniciar sesión, registrarse o entrar como invitado.
+ *
+ * Sigue el patrón MVVM: la validación está en [LoginViewModel]. Esta Activity solo
+ * le pasa lo que escribe el usuario y observa sus LiveData para actualizar la pantalla.
+ */
 class LoginActivity : AppCompatActivity() {
+
+    // "by viewModels()" crea el ViewModel la primera vez y devuelve el mismo al girar el móvil
+    private val viewModel: LoginViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         pantallaCompleta()
@@ -25,9 +39,33 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, RegistroActivity::class.java))
         }
 
-        // De momento se entra directamente. La comprobación del usuario se hará con Firebase.
-        findViewById<MaterialButton>(R.id.btnIniciarSesion).setOnClickListener { entrar() }
+        val tilCorreo = findViewById<TextInputLayout>(R.id.tilCorreo)
+        val tilContrasena = findViewById<TextInputLayout>(R.id.tilContrasena)
+        val etCorreo = findViewById<TextInputEditText>(R.id.etCorreo)
+        val etContrasena = findViewById<TextInputEditText>(R.id.etContrasena)
+
+        // Vista → ViewModel: lo que hace el usuario
+        etCorreo.doAfterTextChanged { viewModel.correoCambiado(it.toString()) }
+        etContrasena.doAfterTextChanged { viewModel.contrasenaCambiada(it.toString()) }
+        findViewById<MaterialButton>(R.id.btnIniciarSesion).setOnClickListener {
+            viewModel.iniciarSesion(etCorreo.text.toString(), etContrasena.text.toString())
+        }
+        // Entrar como invitado no necesita validar nada
         findViewById<MaterialButton>(R.id.btnInvitado).setOnClickListener { entrar() }
+
+        // ViewModel → Vista: la pantalla observa los LiveData y se actualiza sola
+        viewModel.errorCorreo.observe(this) { error ->
+            tilCorreo.error = error?.let { getString(it) }
+        }
+        viewModel.errorContrasena.observe(this) { error ->
+            tilContrasena.error = error?.let { getString(it) }
+        }
+        viewModel.accesoCorrecto.observe(this) { correcto ->
+            if (correcto) {
+                viewModel.accesoAtendido()
+                entrar()
+            }
+        }
     }
 
     /**
