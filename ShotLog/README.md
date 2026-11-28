@@ -1,10 +1,12 @@
 # ShotLog – Diari d'entrenaments de tir olímpic
 
-**Activitat 06 – Menú i llista** · DAM 488, 489 i 1708 · Institut TIC de Barcelona
+**Activitat 07.1 – ViewModel i observabilitat** (i activitat 06 – Menú i llista) · DAM 488, 489 i 1708 · Institut TIC de Barcelona
 
 ShotLog és una aplicació Android (Kotlin + layouts XML) per portar el diari d'entrenaments de tir olímpic de 10 metres, en pistola i carabina d'aire. El tirador registra cada tret tocant una diana dibuixada a escala real, l'aplicació calcula la puntuació igual que un blanc electrònic i guarda l'entrenament amb les seves sèries i notes.
 
-En aquesta activitat he fet:
+> **Novetat de l'activitat 07.1:** les pantalles de **Login** i **Registre** ara segueixen el patró **MVVM**, amb una classe `ViewModel` cadascuna, `LiveData` observats per la pantalla i la validació de tots els camps. Ho explico a la secció [9. MVVM: ViewModel i LiveData](#9-mvvm-viewmodel-i-livedata-activitat-071).
+
+A l'activitat 06 vaig fer:
 
 1. Una **pantalla inicial (splash)** amb el logotip i una animació.
 2. El **menú de navegació** del prototip: menú lateral (☰) i menú d'ajustos (⚙) a la barra superior.
@@ -25,6 +27,7 @@ En aquesta activitat he fet:
 - [6. Preferències i tema fosc](#6-preferències-i-tema-fosc)
 - [7. Accessibilitat i usabilitat](#7-accessibilitat-i-usabilitat)
 - [8. Llenguatge Kotlin utilitzat](#8-llenguatge-kotlin-utilitzat)
+- [9. MVVM: ViewModel i LiveData (activitat 07.1)](#9-mvvm-viewmodel-i-livedata-activitat-071)
 - [Documentació del codi (Dokka / Javadoc)](#documentació-del-codi-dokka--javadoc)
 - [Estructura del codi](#estructura-del-codi)
 - [Pendent per a properes activitats](#pendent-per-a-properes-activitats)
@@ -46,6 +49,9 @@ Llibreries afegides al projecte (a `gradle/libs.versions.toml`):
 | `drawerlayout` | Menú lateral |
 | `core-splashscreen` | Evitar un doble splash a Android 12+ |
 | `material` | Components Material 3 (toolbar, menú lateral, botons, diàlegs, xips…) |
+| `lifecycle-viewmodel-ktx` | Classe `ViewModel` (patró MVVM, activitat 07.1) |
+| `lifecycle-livedata-ktx` | `LiveData` i `observe()` (activitat 07.1) |
+| `activity-ktx` | Delegat `by viewModels()` per obtenir el ViewModel des de l'Activity |
 
 ---
 
@@ -310,6 +316,8 @@ Mesures que he aplicat:
 | **Funcions d'extensió** | `Long.comoFecha()` (data en format dd/MM/yyyy), `Int.comoPuntos()` (dècimes a text "10,4"), `Entreno.textoTotal()`, `AppCompatActivity.aplicarMargenesSistema()`, `irAlLogin()` |
 | Lambdes i funcions com a paràmetre | Clic dels adapters (`alPulsar`), callbacks de `DianaView` |
 | `companion object` | Constants dels `Intent` (`EXTRA_ID`…) i `SesionesAdapter.rellenarTarjeta()` |
+| Delegats (`by`) | `private val viewModel: LoginViewModel by viewModels()` |
+| Tipus nul·lables (`Int?`) i `?.let` | Els errors dels formularis: `null` vol dir "camp correcte" |
 
 Exemple de funció d'extensió per a la data:
 
@@ -319,6 +327,163 @@ fun Long.comoFecha(): String =
 
 // ús: entreno.fecha.comoFecha()  →  "04/11/2026"
 ```
+
+---
+
+## 9. MVVM: ViewModel i LiveData (activitat 07.1)
+
+**Fitxers:** `viewmodel/LoginViewModel.kt`, `viewmodel/RegistroViewModel.kt`, `viewmodel/Validador.kt`, `LoginActivity.kt`, `RegistroActivity.kt`
+
+### Què és el patró MVVM
+
+MVVM vol dir **Model – View – ViewModel**. És una manera d'organitzar el codi de cada pantalla perquè cada part tingui una sola feina:
+
+| Part | Què fa | A ShotLog |
+|---|---|---|
+| **View** (la vista) | Mostra les dades i recull el que fa l'usuari. No decideix res. | `LoginActivity`, `RegistroActivity` i els seus layouts |
+| **ViewModel** | Té la lògica de la pantalla: valida les dades i decideix què ha de passar. No toca cap vista. | `LoginViewModel`, `RegistroViewModel` |
+| **Model** | Les dades i les regles de l'aplicació. | `Validador` (regles dels camps) i, més endavant, el repositori d'usuaris |
+
+Abans de l'activitat 07.1, la `RegistroActivity` ho feia tot: llegia els camps, validava, posava els errors i canviava de pantalla. El `Login` ni tan sols validava res. Ara la feina està repartida:
+
+```
+                 iniciarSesion(correo, contraseña)
+   LoginActivity  ─────────────────────────────────►  LoginViewModel  ───►  Validador
+    (View)                                              (ViewModel)          (regles)
+          ◄─────────────────────────────────────────
+             observe(): errorCorreo, errorContrasena,
+                        accesoCorrecto  (LiveData)
+```
+
+1. L'usuari prem *Iniciar sesión*. L'Activity **només** passa el text dels camps al ViewModel.
+2. El ViewModel valida amb el `Validador` i guarda el resultat als seus `LiveData`.
+3. L'Activity està **observant** aquests LiveData i, quan canvien, actualitza la pantalla sola: posa l'error en vermell o passa a Inici.
+
+### Avantatges que he notat
+
+- **Les dades sobreviuen al gir del mòbil.** Quan gires la pantalla, Android destrueix i torna a crear l'Activity, però el ViewModel es manté. Per això els errors en vermell no desapareixen. Abans es perdien.
+- **El codi és més fàcil de llegir.** Les Activities només tenen codi de pantalla, i les regles estan en un sol lloc.
+- **Les regles es poden provar amb tests.** `Validador` i els ViewModels no depenen de cap vista, així que a l'activitat 11 els podré provar sense emulador.
+- **Les regles es reutilitzen.** Login i Registre comparteixen el mateix `Validador`, així el correu i la contrasenya es comproven igual a les dues pantalles.
+
+### Els ViewModels i els seus LiveData
+
+**`LoginViewModel`**
+
+| LiveData | Tipus | Què indica |
+|---|---|---|
+| `errorCorreo` | `LiveData<Int?>` | Text d'error del correu (id de `strings.xml`), o `null` si és correcte |
+| `errorContrasena` | `LiveData<Int?>` | Text d'error de la contrasenya, o `null` |
+| `accesoCorrecto` | `LiveData<Boolean>` | Passa a `true` quan les dades són correctes i es pot entrar |
+
+**`RegistroViewModel`**
+
+| LiveData | Tipus | Què indica |
+|---|---|---|
+| `errorNombre`, `errorCorreo`, `errorContrasena`, `errorRepetir` | `LiveData<Int?>` | Error de cada camp, o `null` |
+| `primerCampoConError` | `LiveData<Campo?>` | Camp on s'ha de posar el cursor després de validar |
+| `registroCorrecto` | `LiveData<Boolean>` | Passa a `true` quan tot el formulari és correcte |
+
+Els errors es guarden com a **id de text** (`R.string.error_correo_invalido`) i no com a text. Així el ViewModel no necessita el `Context`, i el text surt en l'idioma del mòbil.
+
+### `MutableLiveData` privat i `LiveData` públic
+
+Cada dada té dues versions. La **`MutableLiveData`** és privada: només el ViewModel la pot canviar. La **`LiveData`** és pública i de només lectura: la pantalla la pot observar però no modificar. Així ningú de fora pot canviar l'estat per error.
+
+```kotlin
+class LoginViewModel : ViewModel() {
+
+    private val _errorCorreo = MutableLiveData<Int?>(null)   // només el ViewModel l'escriu
+    val errorCorreo: LiveData<Int?> = _errorCorreo           // la pantalla només la llegeix
+
+    private val _accesoCorrecto = MutableLiveData(false)
+    val accesoCorrecto: LiveData<Boolean> = _accesoCorrecto
+
+    fun iniciarSesion(correo: String, contrasena: String) {
+        _errorCorreo.value = Validador.errorCorreo(correo)
+        _errorContrasena.value = Validador.errorContrasena(contrasena)
+
+        if (_errorCorreo.value == null && _errorContrasena.value == null) {
+            _accesoCorrecto.value = true
+        }
+    }
+}
+```
+
+### Com l'Activity observa el ViewModel
+
+L'Activity obté el ViewModel amb el delegat **`by viewModels()`**. La primera vegada el crea, i quan es gira el mòbil retorna **el mateix**. Després, amb **`observe()`**, li diu què ha de fer quan canviï cada LiveData:
+
+```kotlin
+class LoginActivity : AppCompatActivity() {
+
+    private val viewModel: LoginViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        // ...
+
+        // Vista → ViewModel: el que fa l'usuari
+        btnIniciarSesion.setOnClickListener {
+            viewModel.iniciarSesion(etCorreo.text.toString(), etContrasena.text.toString())
+        }
+
+        // ViewModel → Vista: la pantalla s'actualitza sola quan canvien les dades
+        viewModel.errorCorreo.observe(this) { error ->
+            tilCorreo.error = error?.let { getString(it) }
+        }
+        viewModel.accesoCorrecto.observe(this) { correcto ->
+            if (correcto) {
+                viewModel.accesoAtendido()
+                entrar()
+            }
+        }
+    }
+}
+```
+
+`observe(this)` lliga l'observador al cicle de vida de l'Activity. Només rep canvis quan la pantalla és visible, i deixa d'observar sol quan l'Activity es destrueix, així que no cal netejar res a mà.
+
+### Detalls que he hagut de resoldre
+
+- **Esdeveniments d'un sol cop.** `accesoCorrecto` i `registroCorrecto` fan canviar de pantalla. Si es quedessin a `true` i es girés el mòbil, l'observador es tornaria a disparar. Per això, quan la pantalla ja ha actuat, avisa el ViewModel (`accesoAtendido()` / `registroAtendido()`) i el valor torna a `false`.
+- **Els errors no s'han d'esborrar en girar el mòbil.** Quan l'usuari torna a escriure en un camp, el seu error desapareix (`doAfterTextChanged` → `correoCambiado()`). Però en girar el mòbil Android torna a escriure el text als camps, i això també dispara aquest esdeveniment. El ViewModel recorda el text que va validar i només esborra l'error si el text ha canviat de veritat.
+- **Cursor al primer error.** Al Registre, el ViewModel indica quin és el primer camp incorrecte (`primerCampoConError`) i la pantalla hi posa el cursor. Això ajuda especialment qui fa servir el teclat o TalkBack.
+
+### Comprovacions dels camps
+
+Totes les regles són a `Validador`, un `object` que no depèn de la interfície:
+
+| Camp | Pantalla | Regla | Missatge |
+|---|---|---|---|
+| Nom d'usuari | Registre | Obligatori i de 3 caràcters com a mínim | "Este campo es obligatorio" / "El nombre debe tener al menos 3 caracteres" |
+| Correu | Login i Registre | Obligatori i amb format de correu (expressió regular `nom@domini.ext`) | "Introduce un correo válido" |
+| Contrasenya | Login i Registre | Obligatòria i de 6 caràcters com a mínim (el mínim de Firebase) | "La contraseña debe tener al menos 6 caracteres" |
+| Repetir contrasenya | Registre | Obligatòria i igual que la contrasenya | "Las contraseñas no coinciden" |
+
+```kotlin
+object Validador {
+    private val FORMATO_CORREO = Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")
+
+    @StringRes
+    fun errorCorreo(correo: String): Int? = when {
+        correo.isBlank() -> R.string.error_campo_vacio
+        !FORMATO_CORREO.matches(correo.trim()) -> R.string.error_correo_invalido
+        else -> null
+    }
+    // errorNombre(), errorContrasena(), errorRepetirContrasena() segueixen la mateixa idea
+}
+```
+
+El botó *Continuar como invitado* entra directament sense validar, perquè no hi ha cap dada per comprovar.
+
+### Com provar-ho
+
+1. Al Login, prémer *Iniciar sesión* amb els camps buits: surten els dos errors en vermell.
+2. Escriure un correu sense `@`: surt "Introduce un correo válido".
+3. **Amb els errors a la pantalla, girar el mòbil**: els errors continuen, perquè el ViewModel no s'ha destruït.
+4. Tornar a escriure en un camp: el seu error desapareix.
+5. Amb un correu i una contrasenya correctes, s'entra a Inici.
+6. Al Registre, deixar camps malament: es marquen en vermell i el cursor va al primer incorrecte. Amb tot correcte surt "Cuenta creada" i es torna al Login.
 
 ---
 
@@ -346,8 +511,8 @@ La configuració està a `app/build.gradle.kts`, al bloc `dokka { }`. El text de
 ```
 app/src/main/java/com/example/shotlog/
 ├── SplashActivity.kt          Pantalla inicial animada
-├── LoginActivity.kt           Inicio de sesión
-├── RegistroActivity.kt        Registro (amb validació dels camps)
+├── LoginActivity.kt           Inicio de sesión (View del LoginViewModel)
+├── RegistroActivity.kt        Registro (View del RegistroViewModel)
 ├── MainActivity.kt            Inici: menú lateral i menú d'ajustos
 ├── NuevaSesionActivity.kt     Triar modalitat, mode i format
 ├── RegistroTirosActivity.kt   Registre de trets (estil SIUS)
@@ -361,6 +526,7 @@ app/src/main/java/com/example/shotlog/
 ├── ShotLogApp.kt              Application: aplica el tema guardat
 ├── DatosEjemplo.kt            Entrenaments de prova
 ├── Utilidades.kt              Funcions d'extensió comunes
+├── viewmodel/                 LoginViewModel, RegistroViewModel, Validador (MVVM, 07.1)
 ├── datos/                     RepositorioEntrenos, PreferenciasApp
 ├── modelo/                    Entreno, Serie, Disparo, formats
 ├── tiro/                      Lògica: diana ISSF, puntuació, sèries, zoom
@@ -373,5 +539,5 @@ app/src/main/java/com/example/shotlog/
 
 - **Persistència (activitat 09)**: ara els entrenaments es guarden en memòria i es perden en tancar l'aplicació. Només caldrà canviar `RepositorioEntrenos`.
 - **Filtre de la llista (activitat 07.2)**: el cercador i els filtres de *Mis entrenos* ja tenen el disseny fet, però encara no filtren.
-- **Inici de sessió real** amb Firebase, **Amics** i **xat**.
+- **Inici de sessió real** amb Firebase: només caldrà canviar el punt marcat dins de `LoginViewModel` i `RegistroViewModel`; les pantalles no s'han de tocar. També **Amics** i **xat**.
 - **Fotografia de la diana** amb la càmera.

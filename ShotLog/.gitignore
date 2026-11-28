@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# ZIP de las entregas del Moodle
+*.zip
